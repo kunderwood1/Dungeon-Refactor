@@ -35,7 +35,7 @@
 
 public abstract class DungeonCharacter implements Comparable
 {
-
+// we can change these to private and provide the getters and setters for them. what do you guys think?
 	protected String name;
 	protected int hitPoints;
 	protected int attackSpeed;
