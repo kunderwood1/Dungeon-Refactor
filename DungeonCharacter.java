@@ -33,7 +33,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter implements Comparable
+public abstract class DungeonCharacter
 {
 // we can change these to private and provide the getters and setters for them. what do you guys think?
 	protected String name;
@@ -42,10 +42,6 @@ public abstract class DungeonCharacter implements Comparable
 	protected double chanceToHit;
 	protected int damageMin, damageMax;
 
-	public int compareTo(Object o)
-	{
-		return 1;
-	}
 
 //-----------------------------------------------------------------
 //explicit constructor to initialize instance variables -- it is called
@@ -135,19 +131,6 @@ This method is called by: overridden versions in Hero and Monster
 
 	}//end method
 
-/*-------------------------------------------------------
-isAlive is used to see if a character is still alive by checking hit points
-
-Receives: nothing
-Returns: true is hero is alive, false otherwise
-
-This method calls: nothing
-This method is called by: unknown (intended for external use)
----------------------------------------------------------*/
-    public boolean isAlive()
-	{
-	  return (hitPoints > 0);
-	}//end isAlive method
 
 /*-------------------------------------------------------
 attack allows character to attempt attack on opponent.  First, chance to hit
@@ -168,7 +151,7 @@ hero classes and externally
 
 		canAttack = Math.random() <= chanceToHit;
 
-		if (canAttack)
+		if(canAttack)
 		{
 			damage = (int)(Math.random() * (damageMax - damageMin + 1))
 						+ damageMin ;
@@ -187,9 +170,4 @@ hero classes and externally
 		}//end else
 
 	}//end attack method
-
-//-----------------------------------------------------------------
-
-
-
 }//end class Character
