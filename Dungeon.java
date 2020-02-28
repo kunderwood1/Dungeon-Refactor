@@ -5,7 +5,7 @@ public class Dungeon  {
     public static void main(String[] args){
             Hero theHero;
             Monster theMonster;
-            String playGame = "y";
+            String playGame;
             Scanner kb = new Scanner(System.in);
             do {
                 theHero = chooseHero();
@@ -14,7 +14,6 @@ public class Dungeon  {
                 System.out.println("Play again (y/n)?");
                 playGame = kb.nextLine();
             } while (playGame == "y");
-
         }//end main method
 
 /*-------------------------------------------------------------------
@@ -25,7 +24,6 @@ this task
         public static Hero chooseHero(){
             Scanner kb = new Scanner(System.in);
             int choice;
-            Hero theHero;
 
             System.out.println("Choose a hero:\n" +
                     "1. Warrior\n" +
@@ -85,13 +83,13 @@ user has the option of quitting.
             System.out.println("---------------------------------------------");
 
             //do battle
-            while (theHero.isAlive() && theMonster.isAlive() && !pause.equals("q"))
+            while (theHero.hitPoints > 0 && theMonster.hitPoints > 0 && !pause.equals("q"))
             {
                 //hero goes first
                 theHero.battleChoices(theMonster);
 
                 //monster's turn (provided it's still alive!)
-                if (theMonster.isAlive())
+                if (theMonster.hitPoints > 0)
                     theMonster.attack(theHero);
 
                 //let the player bail out if desired
@@ -100,16 +98,13 @@ user has the option of quitting.
 
             }//end battle loop
 
-            if (!theMonster.isAlive())
+            if (theMonster.hitPoints == 0)
                 System.out.println(theHero.getName() + " was victorious!");
-            else if (!theHero.isAlive())
+            else if (theHero.hitPoints == 0)
                 System.out.println(theHero.getName() + " was defeated :-(");
             else//both are alive so user quit the game
                 System.out.println("Quitters never win ;-)");
 
         }//end battle method
-
-
-
     }
 
