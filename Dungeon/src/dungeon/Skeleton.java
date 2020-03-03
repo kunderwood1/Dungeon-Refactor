@@ -9,6 +9,7 @@ public class Skeleton extends Monster implements Attack{
 
 	@Override
 	public void characterAttack(DungeonCharacter opponant) {
+		
 		System.out.println(getName() + " slices his rusty blade at " +
 				opponant.getName() + ":");
 				superAttack(opponant);

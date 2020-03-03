@@ -17,8 +17,24 @@ public abstract class DungeonCharacter {
 		this.chanceToHit = chanceToHit;
 		this.damageMin = damageMin;
 		this.damageMax = damageMax;
+		
+		
+		
+		
 
 }//end constructor
+	
+	public void addHitPoints(int hitPoints)
+	{
+		if (hitPoints <=0)
+			System.out.println("Hitpoint amount must be positive.");
+		else
+		{
+			this.hitPoints += hitPoints;
+			//System.out.println("Remaining Hit Points: " + hitPoints);
+
+		}
+	}//end addHitPoints method
 	//============ GETTERS AND SETTERS===================
 
 
@@ -81,17 +97,6 @@ public abstract class DungeonCharacter {
 		this.damageMax = damageMax;
 	}
 	
-	public void addHitPoints(int hitPoints)
-	{
-		if (hitPoints <=0)
-			System.out.println("Hitpoint amount must be positive.");
-		else
-		{
-			this.hitPoints += hitPoints;
-			//System.out.println("Remaining Hit Points: " + hitPoints);
-
-		}
-	}//end addHitPoints method
 	
 	public void subtractHitPoints(int hitPoints)
 	{
