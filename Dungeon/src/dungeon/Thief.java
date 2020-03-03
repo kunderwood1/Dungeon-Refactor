@@ -23,7 +23,7 @@ public class Thief extends Hero implements Attack{
 			System.out.println("Surprise attack was successful!\n" +
 								getName ()+ " gets an additional turn.");
 			numTurns++;
-			superAttack(opponent);
+			super.superAttack(opponent);
 		}//end surprise
 		else if (surprise >= .9)
 		{
@@ -31,7 +31,7 @@ public class Thief extends Hero implements Attack{
 								" blocked your attack!");
 		}
 		else
-		    superAttack(opponent);
+		    super.superAttack(opponent);
 
 
 	}//end surpriseAttack method
