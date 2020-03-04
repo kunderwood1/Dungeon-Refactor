@@ -33,7 +33,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter implements Action
+public abstract class DungeonCharacter implements Attack
 {
 	//Need to change into factory pattern strategy
 	
@@ -55,7 +55,7 @@ public abstract class DungeonCharacter implements Action
 	public void setHP(final int hitPoints) { this.hitPoints = hitPoints; }
 	public void setAS(final int attackSpeed) { this.attackSpeed = attackSpeed; }
 	public void setChanceToHit(final double chanceToHit) { this.chanceToHit = chanceToHit; }
-	public void setDamageVariance(final int damageMin, final int damageMax) { this.damageMin = damageMin; this.damageMax = damageMax }
+	public void setDamageVariance(final int damageMin, final int damageMax) { this.damageMin = damageMin; this.damageMax = damageMax; }
 
 	public String getName() { return name; }
 	public int getHitPoints() { return hitPoints; }

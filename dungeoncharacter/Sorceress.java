@@ -9,7 +9,7 @@
  * @version 1.0
  */
 
-
+import java.util.Scanner;
 
 public class Sorceress extends Hero
 {
@@ -31,9 +31,9 @@ public class Sorceress extends Hero
 
 		hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
 		addHitPoints(hPoints);
-		System.out.println(name + " added [" + hPoints + "] points.\n"
+		System.out.println(super.getName() + " added [" + hPoints + "] points.\n"
 							+ "Total hit points remaining are: "
-							+ hitPoints);
+							+ super.getHitPoints());
 		 System.out.println();
 
     }//end increaseHitPoints method
@@ -41,14 +41,15 @@ public class Sorceress extends Hero
 //-----------------------------------------------------------------
 	public void attack(DungeonCharacter opponent)
 	{
-		System.out.println(name + " casts a spell of fireball at " +
+		System.out.println(super.getName() + " casts a spell of fireball at " +
 							opponent.getName() + ":");
 		super.attack(opponent);
 	}//end override of attack method
 
 //-----------------------------------------------------------------
     public void battleChoices(DungeonCharacter opponent)
-	{
+	 {
+      Scanner kb = new Scanner(System.in);
 		super.battleChoices(opponent);
 		int choice;
 
@@ -57,7 +58,8 @@ public class Sorceress extends Hero
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Increase Hit Points");
 		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
+		    choice = Integer.getInteger(kb.nextLine());
+          kb.nextLine();
 
 		    switch (choice)
 		    {
@@ -69,11 +71,13 @@ public class Sorceress extends Hero
 			        System.out.println("invalid choice!");
 		    }//end switch
 
-			numTurns--;
-		    if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
+			super.setNumTurns(super.getNumTurns() - 1);
+			if (super.getNumTurns() > 0)
+			    System.out.println("Number of turns remaining is: " + super.getNumTurns());
 
-		} while(numTurns > 0 && hitPoints > 0 && opponent.getHitPoints() > 0);
+		} while(super.getNumTurns() > 0 && super.getHitPoints() > 0 && opponent.getHitPoints() > 0);
+      
+      kb.close();
 
     }//end overridden method
 

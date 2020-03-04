@@ -43,9 +43,7 @@
   Once a battle concludes, the user has the option of repeating the above
 
 */
-
-import dungeoncharacter.*;
-
+import java.util.Scanner;
 public class Dungeon
 {
     public static void main(String[] args)
@@ -74,10 +72,12 @@ this task
 		int choice;
       Scanner kb = new Scanner(System.in);
       HeroFactory factory = new HeroFactory();
-		Hero theHero;
+		Hero theHero = null;
 
 		System.out.println("Choose a hero:\n" + "1. Warrior\n" + "2. Sorceress\n" + "3. Thief");
-      return factory.createHero(kb.nextInt() - 1);
+      Hero newHero = factory.createHero(kb.nextInt());
+      kb.nextLine();
+      return newHero;
            
 		
 	}//end chooseHero method
@@ -104,9 +104,11 @@ true if the user chooses to continue, false otherwise.
 	public static boolean playAgain()
 	{
 		char again;
+      Scanner kb = new Scanner(System.in);
 
 		System.out.println("Play again (y/n)?");
-		again = Keyboard.readChar();
+		again = kb.next().charAt(0);
+      kb.close();
 
 		return (again == 'Y' || again == 'y');
 	}//end playAgain method
@@ -121,6 +123,7 @@ user has the option of quitting.
 	public static void battle(Hero theHero, Monster theMonster)
 	{
 		char pause = 'p';
+      Scanner kb = new Scanner(System.in);
 		System.out.println(theHero.getName() + " battles " +
 							theMonster.getName());
 		System.out.println("---------------------------------------------");
@@ -137,7 +140,7 @@ user has the option of quitting.
 
 			//let the player bail out if desired
 			System.out.print("\n-->q to quit, anything else to continue: ");
-			pause = Keyboard.readChar();
+			pause = kb.next().charAt(0);
 
 		}//end battle loop
 

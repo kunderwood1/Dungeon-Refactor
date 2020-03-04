@@ -1,20 +1,19 @@
-package dungeoncharacter;
-
 public class HeroFactory {
 	
 	
-	public Hero createHero(String name)
+	public Hero createHero(final int choice)
 	{
-		if(name == null)
+		if(choice < 1 || choice > 3)
 			throw new IllegalArgumentException("Please choose a proper class."); //change b4 master commit
-		
-		
-		if(name == "Warrior")
+         
+     
+         
+		if(choice == 1)
 			return new Warrior();
-		else if (name == "Thief")
-			return new Thief();
-		else if(name == "Sorceress")
+		else if (choice == 2)
 			return new Sorceress();
+		else if(choice == 3)
+			return new Thief();
 		
 		return null;
 	}

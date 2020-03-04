@@ -20,7 +20,7 @@ public class Skeleton extends Monster
 
 	public void attack(DungeonCharacter opponent)
 	{
-		System.out.println(name + " slices his rusty blade at " +
+		System.out.println(super.getName() + " slices his rusty blade at " +
 							opponent.getName() + ":");
 		super.attack(opponent);
 

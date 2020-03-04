@@ -9,6 +9,8 @@
  * @version 1.0
  */
 
+import java.util.Scanner;
+
 public class Thief extends Hero
 {
 
@@ -26,8 +28,9 @@ public class Thief extends Hero
 		if (surprise <= .4)
 		{
 			System.out.println("Surprise attack was successful!\n" +
-								name + " gets an additional turn.");
-			numTurns++;
+								super.getNumTurns() + " gets an additional turn.");
+			
+         super.setNumTurns(super.getNumTurns() + 1);
 			attack(opponent);
 		}//end surprise
 		else if (surprise >= .9)
@@ -43,7 +46,8 @@ public class Thief extends Hero
 
 
     public void battleChoices(DungeonCharacter opponent)
-	{
+	 {
+      Scanner kb = new Scanner(System.in);
 		super.battleChoices(opponent);
 		int choice;
 
@@ -53,7 +57,8 @@ public class Thief extends Hero
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Surprise Attack");
 		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
+		    choice = Integer.getInteger(kb.nextLine());
+          kb.nextLine();
 
 		    switch (choice)
 		    {
@@ -65,11 +70,13 @@ public class Thief extends Hero
 			        System.out.println("invalid choice!");
 		    }//end switch
 
-			numTurns--;
-			if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
+			super.setNumTurns(super.getNumTurns() - 1);
+			if (super.getNumTurns() > 0)
+			    System.out.println("Number of turns remaining is: " + super.getNumTurns());
 
-		} while(numTurns > 0);
+		} while(super.getNumTurns() > 0);
+      
+      kb.close();
 
     }
 }
