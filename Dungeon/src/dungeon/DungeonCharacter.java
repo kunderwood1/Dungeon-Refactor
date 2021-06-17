@@ -1,4 +1,4 @@
-package dungeon;
+package Dungeon.src.dungeon;
 
 public abstract class DungeonCharacter {
 	

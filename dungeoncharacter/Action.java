@@ -1,3 +1,5 @@
+package dungeoncharacter;
+
 public interface Action {
 	public abstract int addHP(final int amountHealed);
 	public abstract int subHP(final int damageDealt);

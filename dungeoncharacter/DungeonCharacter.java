@@ -1,4 +1,4 @@
-
+package dungeoncharacter;
 
 /**
  * Title: DungeonCharacter.java
@@ -37,9 +37,9 @@ public abstract class DungeonCharacter implements Action
 {
 	//Need to change into factory pattern strategy
 	
-	private String name;
-	private int hitPoints;
-	private int attackSpeed;
+	protected String name;
+	protected int hitPoints;
+	protected int attackSpeed;
 	private double chanceToHit;
 	private int damageMin, damageMax;
 	public DungeonCharacter(String name, int hitPoints, int attackSpeed, double chanceToHit, int damageMin, int damageMax)
@@ -55,7 +55,7 @@ public abstract class DungeonCharacter implements Action
 	public void setHP(final int hitPoints) { this.hitPoints = hitPoints; }
 	public void setAS(final int attackSpeed) { this.attackSpeed = attackSpeed; }
 	public void setChanceToHit(final double chanceToHit) { this.chanceToHit = chanceToHit; }
-	public void setDamageVariance(final int damageMin, final int damageMax) { this.damageMin = damageMin; this.damageMax = damageMax }
+	public void setDamageVariance(final int damageMin, final int damageMax) { this.damageMin = damageMin; this.damageMax = damageMax; }
 
 	public String getName() { return name; }
 	public int getHitPoints() { return hitPoints; }

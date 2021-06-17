@@ -1,5 +1,4 @@
-
-
+package DungeonSource;
 /**
  * Title: Hero.java
  *
@@ -32,7 +31,7 @@ public abstract class Hero extends DungeonCharacter
 {
 	// changing the visibility to private from protected 
 	private double chanceToBlock;
-	private int numTurns;
+	protected int numTurns;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user

@@ -1,4 +1,6 @@
+package dungeoncharacter;
 
+import DungeonSource.Keyboard;
 
 /**
  * Title:
@@ -72,4 +74,22 @@ public class Thief extends Hero
 		} while(numTurns > 0);
 
     }
+
+	@Override
+	public int addHP(int amountHealed) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int subHP(int damageDealt) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void specialAttack(DungeonCharacter oppontent) {
+		// TODO Auto-generated method stub
+		
+	}
 }
