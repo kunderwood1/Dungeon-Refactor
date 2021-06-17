@@ -1,3 +1,5 @@
+package DungeonSource;
+
 
 
 /**
@@ -36,9 +38,9 @@
 public abstract class DungeonCharacter implements Comparable
 {
 
-	private String name;
-	private int hitPoints;
-	private int attackSpeed;
+	protected String name;
+	protected int hitPoints;
+	protected int attackSpeed;
 	private double chanceToHit;
 	private int damageMin, damageMax;
 

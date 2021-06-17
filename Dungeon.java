@@ -1,3 +1,12 @@
+import DungeonSource.Monster;
+import DungeonSource.Hero;
+import DungeonSource.Keyboard;
+import DungeonSource.Warrior;
+import DungeonSource.Sorceress;
+import DungeonSource.Thief;
+import DungeonSource.Ogre;
+import DungeonSource.Gremlin;
+import DungeonSource.Skeleton;
 /**
  * Title: Dungeon.java
  *

@@ -1,4 +1,4 @@
-package dungeon;
+package Dungeon.src.dungeon;
 
 public class Skeleton extends Monster implements Attack{
 

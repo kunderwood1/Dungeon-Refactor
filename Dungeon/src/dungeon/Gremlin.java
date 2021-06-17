@@ -1,4 +1,4 @@
-package dungeon;
+package Dungeon.src.dungeon;
 
 public class Gremlin extends Monster implements Attack {
 	

@@ -1,4 +1,6 @@
+package dungeoncharacter;
 
+import DungeonSource.Keyboard;
 
 /**
  * Title: Hero.java
