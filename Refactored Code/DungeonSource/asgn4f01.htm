@@ -1,0 +1,257 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Inheritance and Polymorphism</title></head>
+
+<body>
+<h2>Inheritance and Polymorphism<br>
+Heroes versus Monsters<br>
+75 points</h2>
+<hr>
+<p><font size="3">For this assignment you will create an inheritance hierarchy
+and utilize polymorphism.&nbsp; The idea behind the game is that one of three
+Heroes (Warrior, Sorceress, Thief) chosen by the user will battle one of three
+randomly selected Monsters (Ogre, Gremlin, Skeleton).&nbsp; The battle is to the
+death.&nbsp; When a character dies, the user can play again.</font></p>
+<p><font size="3">The inheritance hierarchy for the program is as follows:</font></p>
+<h3><font size="3">DungeonCharacter (base - abstract)</font></h3>
+<ul>
+  <li><font size="3">contains instance variables that any character in the game
+    will have -- protected access is ok (NO public access allowed!)</font>
+    <ul>
+      <li><font size="3">name - <b>String</b></font></li>
+      <li><font size="3">hit points (how much damage a character can take before
+        it expires) - <b>integer</b></font></li>
+      <li><font size="3">attack speed - <b>integer</b> (1 is slowest)</font></li>
+      <li><font size="3">damage range (minimum and maximum amount of damage a
+        character can do on an attack) - <b>two integers</b></font></li>
+      <li><font size="3">chance to hit opponent when attacking - <b>double</b></font></li>
+      <li><font size="3">anything else you deem necessary</font></li>
+    </ul>
+  </li>
+  <li><font size="3">constructor to initialize instance variables</font></li>
+  <li><font size="3">get and set methods as you deem necessary</font></li>
+  <li><font size="3">an <b>attack</b> method</font>
+    <ul>
+      <li><font size="3">first checks if character can attack (based on chance
+        to hit)</font></li>
+      <li><font size="3">if it can, a hit in range of minimum to maximum damage
+        is generated and applied to opponent -- user should be informed of what
+        happens</font></li>
+      <li><font size="3">if it cannot, a message should be displayed that says
+        the attack failed</font></li>
+    </ul>
+  </li>
+</ul>
+<h3><font size="3">Hero (derived from DungeonCharacter -- Hero is also abstract)</font></h3>
+<ul>
+  <li>contains instance variables that any hero should have
+    <ul>
+      <li>chance to block (a Hero has a chance to block any attack by a Monster
+        --&nbsp; this should be checked after the Monster has attacked and hit
+        points are about to be removed from the Hero) - <b>double</b></li>
+      <li>number of turns in round (number of attacks/special operations a Hero
+        gets to perform per round -- based on Hero attack speed versus Monster
+        attack speed - if Hero is twice as fast then s/he gets two turns, three
+        times as fast gets three turns, etc.) - <b>integer</b></li>
+      <li>anything else you deem necessary</li>
+    </ul>
+  </li>
+  <li>constructor - should call base constructor, too</li>
+  <li>a method to get name of character from user -- should be invoked in
+    constructor after base constructor</li>
+  <li>get, set, and any other methods (this includes overridden ones) you deem
+    necessary</li>
+  <li>a <b>battleChoices</b> method that allows a Hero to attack or use special
+    skill -- each Hero will have at least one special skill (details on skills
+    will be given when each Hero is introduced)</li>
+</ul>
+<h3><font size="3">Warrior (derived from Hero)</font></h3>
+<ul>
+  <li>instance variables as you deem necessary (none may be necessary!)</li>
+  <li>a <b>crushingBlow</b> method that does 75 to 175 points of damage but only
+    has a 40% chance of succeeding -- this is the Warrior's special skill</li>
+  <li>gets, sets, and any other methods you deem necessary (you may want to
+    override the <b>attack</b> and <b>battleChoices</b> methods to fit your
+    Warrior)</li>
+  <li><u>suggested</u> statistics for Warrior (should be set up in constructor(s))
+    <ul>
+      <li>hit points: 125</li>
+      <li>attack speed: 4</li>
+      <li>chance to hit: 0.8 (80 percent)</li>
+      <li>minimum damage: 35</li>
+      <li>maximum damage: 60</li>
+      <li>chance to block: 0.2 (20 percent)</li>
+    </ul>
+  </li>
+</ul>
+<h3><font size="3">Sorceress (derived from Hero)</font></h3>
+<ul>
+  <li>same game as Warrior except special skill is heal</li>
+  <li><u>suggested</u> statistics for Sorceress (should be set up in
+    constructor(s))
+    <ul>
+      <li>hit points: 75</li>
+      <li>attack speed: 5</li>
+      <li>chance to hit: 0.7 (70 percent)</li>
+      <li>minimum damage: 25</li>
+      <li>maximum damage: 45</li>
+      <li>chance to block: 0.3 (30 percent)</li>
+    </ul>
+  </li>
+</ul>
+<h3><font size="3">Thief (derived from Hero)</font></h3>
+<ul>
+  <li>same game as Warrior except special skill is <b>surpriseAttack </b>-- 40
+    percent chance it is successful.&nbsp; If it is successful, Thief gets an
+    attack and another turn in the current round.&nbsp; There is a 20 percent
+    chance the Thief is caught in which case no attack is rendered.&nbsp; The
+    other 40 percent is just a normal attack.</li>
+  <li><u>suggested</u> statistics for Thief (should be set up in constructor(s))
+    <ul>
+      <li>hit points: 75</li>
+      <li>attack speed: 6</li>
+      <li>chance to hit: 0.8 (80 percent)</li>
+      <li>minimum damage: 20</li>
+      <li>maximum damage: 40</li>
+      <li>chance to block: 0.4 (40 percent)</li>
+    </ul>
+  </li>
+</ul>
+<h3><font size="3">Monster (derived from DungeonCharacter --&nbsp; abstract)</font></h3>
+<ul>
+  <li>contains instance variables that any Monster should have
+    <ul>
+      <li>chance to heal (a Monster has a chance to heal after any attack that
+        causes a loss of hit points -- this should be checked after the Monster
+        has been attacked and hit points have been lost -- note that if the hit
+        points lost kill the Monster, it cannot heal itself!) - <b>double</b></li>
+      <li>minimum and maximum points a monster can heal itself - <b>two</b> <b>integers</b></li>
+      <li>anything else you deem necessary</li>
+    </ul>
+  </li>
+  <li>constructor - should call base constructor, too</li>
+  <li>get, set, and any other methods (this includes overridden ones) you deem
+    necessary</li>
+  <li>a <b>heal</b> method that is based on chance to heal and then range of
+    heal points for monster</li>
+</ul>
+<h3><font size="3">Ogre (derived from Monster)</font></h3>
+<ul>
+  <li>instance variables as you deem necessary (none may be necessary!)</li>
+  <li>gets, sets, and any other methods you deem necessary (you may want to
+    override the <b>attack</b> method to fit your Ogre)</li>
+  <li><u>suggested</u> statistics for Ogre (should be set up in constructor(s)
+    -- choose a name for your Ogre)
+    <ul>
+      <li>hit points: 200</li>
+      <li>attack speed: 2</li>
+      <li>chance to hit: 0.6 (60 percent)</li>
+      <li>minimum damage: 30</li>
+      <li>maximum damage: 60</li>
+      <li>chance to heal: 0.1 (10 percent)</li>
+      <li>minimum heal points: 30</li>
+      <li>maximum heal points: 60</li>
+    </ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<h3><font size="3">Gremlin (derived from Monster)</font></h3>
+<ul>
+  <li>instance variables as you deem necessary (none may be necessary!)</li>
+  <li>gets, sets, and any other methods you deem necessary (you may want to
+    override the <b>attack</b> method to fit your Gremlin)</li>
+  <li><u>suggested</u> statistics for Gremlin (should be set up in constructor(s)--
+    choose a name for your Gremlin)
+    <ul>
+      <li>hit points: 70</li>
+      <li>attack speed: 5</li>
+      <li>chance to hit: 0.8 (80 percent)</li>
+      <li>minimum damage: 15</li>
+      <li>maximum damage: 30</li>
+      <li>chance to heal: 0.4 (40 percent)</li>
+      <li>minimum heal points: 20</li>
+      <li>maximum heal points: 40</li>
+    </ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<h3><font size="3">Skeleton (derived from Monster)</font></h3>
+<ul>
+  <li>instance variables as you deem necessary (none may be necessary!)</li>
+  <li>gets, sets, and any other methods you deem necessary (you may want to
+    override the <b>attack</b> method to fit your Skeleton)</li>
+  <li><u>suggested</u> statistics for Skeleton (should be set up in
+    constructor(s)-- choose a name for your Skeleton)
+    <ul>
+      <li>hit points: 100</li>
+      <li>attack speed: 3</li>
+      <li>chance to hit: 0.8 (80 percent)</li>
+      <li>minimum damage: 30</li>
+      <li>maximum damage: 50</li>
+      <li>chance to heal: 0.3 (30 percent)</li>
+      <li>minimum heal points: 30</li>
+      <li>maximum heal points: 50</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h3>Game Play</h3>
+<ol>
+  <li>User chooses a Hero</li>
+  <li>Program randomly selects a Monster</li>
+  <li>Hero and Monster battle until one is defeated
+    <ol>
+      <li>Hero goes first and gets to select from battleChoices.&nbsp; Hero may
+        have multiple choices depending on speed of Hero versus Monster</li>
+      <li>Monster goes second and always attacks.&nbsp; Monster cannot attack if
+        Hero defeated it during Hero attack (duh)</li>
+      <li>After each round user should be given option to quit.</li>
+    </ol>
+  </li>
+  <li>After battle is complete, user should be given option to play a new game</li>
+</ol>
+<p>Throughout game play the user should be given as much information as possible
+about the battle.&nbsp; Here are things the user should be told:</p>
+<ul>
+  <li>What happened on an attack (how much damage or that it failed or that it
+    was blocked)</li>
+  <li>How many hit points remain for a character after the character loses hit
+    points (via an attack) or gains hit points (via healing)</li>
+  <li>Anything else you can think of to make game play more clear</li>
+</ul>
+<hr>
+<h3>Group Work</h3>
+<p>You may work in pairs on this assignment.&nbsp; If you choose to do this, you
+must complete a write-up that describes very specifically what each person
+did.&nbsp; One person should work on the Hero hierarchy, the other on the
+Monster hierarchy.</p>
+<hr>
+<h3>Extra Credit</h3>
+<ol>
+  <li>5 points - add a special skill to each Monster.&nbsp; When a Monster
+    attacks this special skill should be randomly chosen (perhaps 30 percent of
+    the time)</li>
+  <li>5 points - add another Hero.&nbsp; The Hero should have a unique special
+    skill</li>
+</ol>
+<hr>
+<p>&nbsp;</p>
+<h3>To turn in</h3>
+<p>Submit via <a href="http://blackboard.ewu.edu">http://blackboard.ewu.edu</a>
+a zip file (just one if you work in a team) that contains:</p>
+<ul>
+  <li>all source files necessary to compile and run program</li>
+  <li>testing write-up (in plain text) -- recognize your testing starts the
+    first time you compile and run your program -- highlight the major problems
+    you had.</li>
+</ul>
+<p><b>Get started ASAP!&nbsp; This assignment is due by 11:59pm, Friday,
+November 16</b></p>
+</body>
+
+</html>
