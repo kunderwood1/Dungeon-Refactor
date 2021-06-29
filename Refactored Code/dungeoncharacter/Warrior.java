@@ -1,10 +1,23 @@
-package Dungeon.src.dungeon;
+package dungeoncharacter;
 
-import java.util.Scanner;
+import DungeonSource.Keyboard;
 
-public class Warrior extends Hero implements Attack {
+/**
+ * Title:
+ * Description:
+ * Copyright:    Copyright (c) 2001
+ * Company:
+ * @author
+ * @version 1.0
+ */
 
-	public Warrior()
+
+
+
+public class Warrior extends Hero
+{
+
+    public Warrior()
 	{
 
 		super("Warrior", 125, 4, .8, 35, 60, .2);
@@ -18,23 +31,23 @@ public class Warrior extends Hero implements Attack {
 		if (Math.random() <= .4)
 		{
 			int blowPoints = (int)(Math.random() * 76) + 100;
-			System.out.println(getName() + " lands a CRUSHING BLOW for " + blowPoints
+			System.out.println(name + " lands a CRUSHING BLOW for " + blowPoints
 								+ " damage!");
 			opponent.subtractHitPoints(blowPoints);
 		}//end blow succeeded
 		else
 		{
-			System.out.println(getName()+ " failed to land a crushing blow");
+			System.out.println(name + " failed to land a crushing blow");
 			System.out.println();
 		}//blow failed
 
 	}//end crushingBlow method
 
-	public void characterAttack(DungeonCharacter opponent)
+	public void attack(DungeonCharacter opponent)
 	{
-		System.out.println(getName ()+ " swings a mighty sword at " +
+		System.out.println(name + " swings a mighty sword at " +
 							opponent.getName() + ":");
-		superAttack(opponent);
+		super.attack(opponent);
 	}//end override of attack method
 
 
@@ -45,18 +58,17 @@ public class Warrior extends Hero implements Attack {
 		int choice;
 
 		super.battleChoices(opponent);
-		Scanner kb = new Scanner(System.in);
 
 		do
 		{
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Crushing Blow on Opponent");
 		    System.out.print("Choose an option: ");
-		   // choice = Keyboard.readInt();
-		    choice = kb.nextInt();
+		    choice = Keyboard.readInt();
+
 		    switch (choice)
 		    {
-			    case 1: characterAttack(opponent);
+			    case 1: attack(opponent);
 			        break;
 			    case 2: crushingBlow(opponent);
 			        break;
@@ -69,7 +81,28 @@ public class Warrior extends Hero implements Attack {
 			    System.out.println("Number of turns remaining is: " + numTurns);
 
 		} while(numTurns > 0);
-		kb.close();
+
     }//end battleChoices method
 
-}
+
+	@Override
+	public int addHP(int amountHealed) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int subHP(int damageDealt) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public void specialAttack(DungeonCharacter oppontent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}//end Hero class

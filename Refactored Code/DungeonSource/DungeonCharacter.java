@@ -42,7 +42,8 @@ public abstract class DungeonCharacter implements Comparable
 	protected int hitPoints;
 	protected int attackSpeed;
 	private double chanceToHit;
-	private int damageMin, damageMax;
+	private int damageMin;
+	private int damageMax;
 
 	public int compareTo(Object o)
 	{

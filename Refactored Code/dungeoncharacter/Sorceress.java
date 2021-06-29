@@ -1,11 +1,22 @@
-package Dungeon.src.dungeon;
+package dungeoncharacter;
 
-import java.util.Scanner;
+import DungeonSource.Keyboard;
 
-public class Sorceress extends Hero implements Attack{
-	Hero chara;
-	private final int MIN_ADD = 25;
-	private final int MAX_ADD = 50;
+/**
+ * Title:
+ * Description:
+ * Copyright:    Copyright (c) 2001
+ * Company:
+ * @author
+ * @version 1.0
+ */
+
+
+
+public class Sorceress extends Hero
+{
+	public final int MIN_ADD = 25;
+	public final int MAX_ADD = 50;
 
 //-----------------------------------------------------------------
     public Sorceress()
@@ -22,26 +33,24 @@ public class Sorceress extends Hero implements Attack{
 
 		hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
 		addHitPoints(hPoints);
-		System.out.println(getName ()+ " added [" + hPoints + "] points.\n"
+		System.out.println(name + " added [" + hPoints + "] points.\n"
 							+ "Total hit points remaining are: "
-							+ getHitPoints());
+							+ hitPoints);
 		 System.out.println();
 
     }//end increaseHitPoints method
 
-
-	@Override
-	public void characterAttack(DungeonCharacter opponent)
+//-----------------------------------------------------------------
+	public void attack(DungeonCharacter opponent)
 	{
-		System.out.println(getName()+ " casts a spell of fireball at " +
+		System.out.println(name + " casts a spell of fireball at " +
 							opponent.getName() + ":");
-		superAttack(opponent);
+		super.attack(opponent);
 	}//end override of attack method
 
 //-----------------------------------------------------------------
     public void battleChoices(DungeonCharacter opponent)
 	{
-    	Scanner kb = new Scanner(System.in);
 		super.battleChoices(opponent);
 		int choice;
 
@@ -50,11 +59,11 @@ public class Sorceress extends Hero implements Attack{
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Increase Hit Points");
 		    System.out.print("Choose an option: ");
-		    
-		    choice = kb.nextInt();
+		    choice = Keyboard.readInt();
+
 		    switch (choice)
 		    {
-			    case 1: characterAttack(opponent);
+			    case 1: attack(opponent);
 			        break;
 			    case 2: increaseHitPoints();
 			        break;
@@ -63,13 +72,29 @@ public class Sorceress extends Hero implements Attack{
 		    }//end switch
 
 			numTurns--;
-		    if (getNumTurns() > 0)
-			    System.out.println("Number of turns remaining is: " + getNumTurns());
+		    if (numTurns > 0)
+			    System.out.println("Number of turns remaining is: " + numTurns);
 
-		} while(getNumTurns() > 0 && getHitPoints() > 0 && opponent.getHitPoints() > 0);
-		kb.close();
+		} while(numTurns > 0 && hitPoints > 0 && opponent.getHitPoints() > 0);
+
     }//end overridden method
 
+	@Override
+	public int addHP(int amountHealed) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-	
-}
+	@Override
+	public int subHP(int damageDealt) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void specialAttack(DungeonCharacter oppontent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}//end class

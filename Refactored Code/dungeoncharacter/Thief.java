@@ -1,12 +1,20 @@
-package Dungeon.src.dungeon;
+package dungeoncharacter;
 
-import java.util.Scanner;
+import DungeonSource.Keyboard;
 
-public class Thief extends Hero implements Attack{
-	
-	
+/**
+ * Title:
+ * Description:
+ * Copyright:    Copyright (c) 2001
+ * Company:
+ * @author
+ * @version 1.0
+ */
 
-	public Thief()
+public class Thief extends Hero
+{
+
+    public Thief()
 	{
 		super("Thief", 75, 6, .8, 20, 40, .5);
 
@@ -14,16 +22,15 @@ public class Thief extends Hero implements Attack{
 
     }//end constructor
 
-	@Override
-	public void characterAttack(DungeonCharacter opponent)
+	public void surpriseAttack(DungeonCharacter opponent)
 	{
 		double surprise = Math.random();
 		if (surprise <= .4)
 		{
 			System.out.println("Surprise attack was successful!\n" +
-								getName ()+ " gets an additional turn.");
+								name + " gets an additional turn.");
 			numTurns++;
-			super.superAttack(opponent);
+			attack(opponent);
 		}//end surprise
 		else if (surprise >= .9)
 		{
@@ -31,7 +38,7 @@ public class Thief extends Hero implements Attack{
 								" blocked your attack!");
 		}
 		else
-		    super.superAttack(opponent);
+		    attack(opponent);
 
 
 	}//end surpriseAttack method
@@ -39,7 +46,6 @@ public class Thief extends Hero implements Attack{
 
     public void battleChoices(DungeonCharacter opponent)
 	{
-    	Scanner kb = new Scanner(System.in);
 		super.battleChoices(opponent);
 		int choice;
 
@@ -49,15 +55,13 @@ public class Thief extends Hero implements Attack{
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Surprise Attack");
 		    System.out.print("Choose an option: ");
-		    // changing Keyboard clas to Scanner 
-		    
-		    //choice = Keyboard.readInt();
-		    choice = kb.nextInt();
+		    choice = Keyboard.readInt();
+
 		    switch (choice)
 		    {
-			    case 1: characterAttack(opponent);
+			    case 1: attack(opponent);
 			        break;
-			    case 2: superAttack(opponent);
+			    case 2: surpriseAttack(opponent);
 			        break;
 			    default:
 			        System.out.println("invalid choice!");
@@ -68,7 +72,24 @@ public class Thief extends Hero implements Attack{
 			    System.out.println("Number of turns remaining is: " + numTurns);
 
 		} while(numTurns > 0);
-		kb.close();
+
     }
 
+	@Override
+	public int addHP(int amountHealed) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int subHP(int damageDealt) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void specialAttack(DungeonCharacter oppontent) {
+		// TODO Auto-generated method stub
+		
+	}
 }
